@@ -8,6 +8,18 @@ li {
     list-style: none;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .4s;
+
+    &:hover {
+        color: aquamarine;
+        text-decoration: underline;
+    }
+}
+
 @media(min-width: 767px) {
     * {
         font-size: 32px;

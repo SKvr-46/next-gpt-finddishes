@@ -2,6 +2,8 @@ import Head from "next/head"
 import { useState } from "react"
 import { InputForm } from "@/component/InputForm"
 import styles from "styles/index.module.scss"
+import { Layout } from "@/component/Layout"
+import { Footer } from "@/component/Footer"
 
 export default function Home() {
     const [foodInput, setFoodInput] = useState("")
@@ -12,7 +14,7 @@ export default function Home() {
         <Head>
             <title>Generate Dishes</title>
         </Head>
-
+        <Layout>
         <main className={styles.main}>
             <div className={styles.title}>
             <p>Generate Dishes</p>
@@ -29,6 +31,8 @@ export default function Home() {
             })}
             </div>
         </main>
+        </Layout>
+        <Footer/>
         </div>
     )
     }
