@@ -5,7 +5,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export default async function (req, res) {
+export default async function (req:any, res:any) {
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
@@ -35,7 +35,7 @@ export default async function (req, res) {
     const result = completion.data.choices[0].text;
     res.status(200).json({ result })
     // res.status(200).json({ result: completion.data.choices[0].text });
-  } catch(error) {
+  } catch(error:any) {
 
     if (error.response) {
       console.error(error.response.status, error.response.data);
@@ -51,7 +51,7 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(foodList) {
+function generatePrompt(foodList: string) {
   return `Suggest five examples of dishes from these foods.
 
 Foods: Broccoli,Shrimp,Cabbage
