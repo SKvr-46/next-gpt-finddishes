@@ -33,7 +33,7 @@ export default async function (req:any, res:any) {
       max_tokens: 1024,
     });
     const result = completion.data.choices[0].text;
-    res.status(200).json({ result })
+    res.status(200).json({ result: JSON.parse(JSON.stringify(result))  })
     // res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error:any) {
 
