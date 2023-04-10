@@ -4,10 +4,12 @@ import { InputForm } from "@/component/InputForm"
 import styles from "styles/index.module.scss"
 import { Layout } from "@/component/Layout"
 import { Footer } from "@/component/Footer"
+import { Loader } from "@/component/Loader"
 
 export default function Home() {
     const [foodInput, setFoodInput] = useState("")
     const [result, setResult] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     return (
         <div>
@@ -24,11 +26,17 @@ export default function Home() {
             foodInput={foodInput}
             setFoodInput={setFoodInput}
             setResult={setResult}
+            setIsLoading={setIsLoading}
             />
             <div className={styles.result}>
-            {result.split('\n').map((line, index) => {
-                return <li key={index}>{line}<br/></li>
-            })}
+            {
+                isLoading?
+                <Loader/>
+                :
+                result.split('\n').map((line, index) => {
+                    return <li key={index}>{line}<br/></li>
+                })
+            }
             </div>
         </main>
         </Layout>

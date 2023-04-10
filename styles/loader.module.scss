@@ -1,0 +1,54 @@
+@keyframes LoaderRotation {
+    0% {
+        transform: rotate(0deg);
+        scale: 0.8;
+        filter: brightness(0.8);
+    }
+    50% {
+        transform: rotate(180deg);
+        scale: 1;
+        filter: brightness(1.2);
+    }
+    100% {
+        transform: rotate(360deg);
+        scale: 0.8;
+        filter: brightness(0.8);
+    }
+}
+
+.loader {
+    width: 5em;
+    height: 5em;
+    position: relative;
+    background: rgba(0, 0, 255, 0.5);
+    animation: LoaderRotation 2s linear infinite;
+    transform-origin: center center; /* 四角形の中心を中心に回転するよう設定 */
+
+    & .block_1 {
+        width: 5em;
+        height: 5em;
+        position: absolute;
+        background: rgba(255, 80, 0, 0.5);
+        box-shadow: 0 0 20px rgba(255, 80, 0, 0.6);
+        transform: rotate(22.5deg);
+    }
+
+    & .block_2 {
+        width: 5em;
+        height: 5em;
+        position: absolute;
+        background: rgba(15, 222, 10, 0.5);
+        box-shadow: 0 0 20px rgba(15, 222, 10, 0.6);
+        transform: rotate(45deg);
+    }
+
+    & .block_3 {
+        width: 5em;
+        height: 5em;
+        position: absolute;
+        background: rgba(235, 16, 210, 0.5);
+        box-shadow: 0 0 20px rgba(235, 16, 210, 0.6);
+        transform: rotate(67.5deg);
+    }
+
+}

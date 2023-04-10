@@ -4,13 +4,15 @@ type InputFormPropsType = {
     foodInput: string
     setFoodInput: React.Dispatch<React.SetStateAction<string>>
     setResult: React.Dispatch<React.SetStateAction<string>>
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const InputForm = (props: InputFormPropsType) => {
-    const { foodInput, setFoodInput, setResult} = props
+    const { foodInput, setFoodInput, setResult, setIsLoading} = props
 
     async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        setIsLoading(true)
         try {
         const response = await fetch("/api/generate", {
             method: "POST",
@@ -30,7 +32,10 @@ export const InputForm = (props: InputFormPropsType) => {
         } catch(error:any) {
         console.error(error)
         alert(error.message)
+        } finally {
+            setIsLoading(false)
         }
+        
     }
     return(
         <form onSubmit={onSubmit} className={styles.form}>
