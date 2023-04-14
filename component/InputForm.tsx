@@ -41,7 +41,7 @@ export const InputForm = (props: InputFormPropsType) => {
         <form onSubmit={onSubmit} className={styles.form}>
             <input
                 type="text"
-                name="animal"
+                name="food"
                 placeholder="Enter some foods"
                 value={foodInput}
                 onChange={(e) => setFoodInput(e.target.value)}

@@ -1,9 +1,9 @@
-import { Configuration, OpenAIApi } from "openai";
+import { Configuration, OpenAIApi } from "openai"
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
+const openai = new OpenAIApi(configuration)
 
 export default async function (req:any, res:any) {
   if (!configuration.apiKey) {
@@ -11,18 +11,18 @@ export default async function (req:any, res:any) {
       error: {
         message: "OpenAI API key not configured, please follow instructions in README.md",
       }
-    });
-    return;
+    })
+    return
   }
 
-  const foods = req.body.foods || '';
+  const foods = req.body.foods || ''
   if (foods.trim().length === 0) {
     res.status(400).json({
       error: {
         message: "Please enter valid foods",
       }
-    });
-    return;
+    })
+    return
   }
 
   try {
@@ -37,15 +37,15 @@ export default async function (req:any, res:any) {
   } catch(error:any) {
 
     if (error.response) {
-      console.error(error.response.status, error.response.data);
-      res.status(error.response.status).json(error.response.data);
+      console.error(error.response.status, error.response.data)
+      res.status(error.response.status).json(error.response.data)
     } else {
-      console.error(`Error with OpenAI API request: ${error.message}`);
+      console.error(`Error with OpenAI API request: ${error.message}`)
       res.status(500).json({
         error: {
           message: 'An error occurred during your request.',
         }
-      });
+      })
     }
   }
 }
@@ -79,5 +79,5 @@ Dishs:
 炊き込みご飯 - 米にお好みの具材を加えて炊き上げる。例えば、鶏肉、野菜、卵、納豆など。
 ビールバッターチキン - ビールとバターで調理したジューシーなチキンの料理。スパイシーな味わいが特徴的です。
 Foods: ${foodList}
-Dishs:`;
+Dishs:`
 }
